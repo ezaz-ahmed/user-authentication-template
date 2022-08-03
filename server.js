@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import connectDb from "./config/database.js";
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -17,9 +18,8 @@ app.use(cors());
 
 const PORT = process.env.PORT || 8080;
 
-app.use("/api", (req, res) => {
-  res.send({"Hello": "world"})
-});
+
+app.use('/api/users', userRoutes)
 
 app.listen(PORT, console.log(`Port: ${PORT}`));
 
